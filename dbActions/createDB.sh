@@ -9,20 +9,8 @@ then
 fi
 
 read -p  "Enter Database Name: " dbName
+source ./utils/validateDBName.sh $dbName
 
-if [ -z "$dbName" ]
-then
-    echo "Database Name Can't Be Empty"
-    exit
-elif [[ $dbName =~ ^[0-9] ]]
-then
-    echo "Database Name Can't Start With Number"
-    exit
-elif [[ $dbName =~ [^a-zA-Z0-9_] ]]
-then
-    echo "Database Name Can't Contain Special Characters Or Space"
-    exit
-fi
 
 if [ -d "/dbs/$dbName" ]
 then
