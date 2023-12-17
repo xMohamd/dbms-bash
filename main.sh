@@ -12,19 +12,7 @@ do
         dbActions/listDBs.sh
             ;;
         "Connect To Specific Database")
-            read -p "Enter Database Name: " dbName
-            cd $dbName
-            PS3="Select Table: "
-            select table in $(ls)
-            do 
-                if [[ -f $table ]]
-                then 
-                    echo "Table Selected Successfully"
-                    break
-                else 
-                    echo "Invalid Choice"
-                fi
-            done
+        dbActions/connectDB.sh
             ;;
         "Drop Database")
         dbActions/dropDB.sh
