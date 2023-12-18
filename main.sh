@@ -2,7 +2,14 @@
 
 PS3="Select option (1-5): "
 
-select choice in "Create Database" "List Databases" "Connect To Specific Database" "Drop Database" "Exit"
+options=(
+ "Create Database"
+ "List Databases"
+ "Connect To Specific Database"
+ "Drop Database"
+ "Exit"
+)
+select choice in "${options[@]}"
 do 
     case $choice in 
         "Create Database")  
@@ -12,7 +19,7 @@ do
         dbActions/listDBs.sh
             ;;
         "Connect To Specific Database")
-        dbActions/connectDB.sh
+        source dbActions/connectDB.sh
             ;;
         "Drop Database")
         dbActions/dropDB.sh

@@ -22,7 +22,7 @@ then
 else
     cd dbs/$dbName
     echo "You are connected to $dbName database"
-    ../../tbActions/tbMenu.sh
+    source ../../tbActions/tbMenu.sh
 fi
 
 
