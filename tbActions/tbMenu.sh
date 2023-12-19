@@ -18,13 +18,13 @@ options=(
 select choice in "${options[@]}"
 do
     case $choice in
-        "Create Table")   source ./createTable.sh ;;
-        "List Tables")    source ./listTables.sh ;;
-        "Drop Table")     source ./dropTable.sh ;;
-        "Insert into Table") source ./insertIntoTable.sh ;;
-        "Select From Table") source ./selectFromTable.sh ;;
-        "Delete From Table") source ./deleteFromTable.sh ;;
-        "Update Table") source ./updateTable.sh ;;
+        "Create Table")   source ../../tbActions/createTable.sh;;
+        "List Tables")    source ../../tbActions/listTables.sh ;;
+        "Drop Table")     source ../../tbActions/dropTable.sh ;;
+        "Insert into Table") source ../../tbActions/insertIntoTable.sh ;;
+        "Select From Table") source ../../tbActions/selectFromTable.sh ;;
+        "Delete From Table") source ../../tbActions/deleteFromTable.sh ;;
+        "Update Table") source ../../tbActions/updateTable.sh ;;
         "Back to Main Menu") 
             cd ../..
             source ./main.sh
