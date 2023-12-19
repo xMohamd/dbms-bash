@@ -12,7 +12,7 @@ fi
 echo "Databases List:"
 ls -F dbs | grep / | cut -d/ -f1 2>/dev/null
 read -p "Database name to connect: " dbName
-source ./utils/validateDBName.sh $dbName
+source ./utils/validateName.sh $dbName
 
 
 if [ ! -d "dbs/$dbName" ]

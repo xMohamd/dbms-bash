@@ -8,8 +8,12 @@ then
     mkdir dbs
 fi
 
-read -p  "Enter Database Name: " dbName
-source ./utils/validateDBName.sh $dbName
+while true
+do
+    read -p "Enter the name of the database: " dbName
+    source ./utils/validateName.sh $dbName
+    break
+done
 
 
 if [ -d "/dbs/$dbName" ]

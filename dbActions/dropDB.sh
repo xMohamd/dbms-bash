@@ -13,7 +13,7 @@ echo "Databases List:"
 # ./dbActions/listDBs.sh
 ls -F dbs | grep / | cut -d/ -f1
 read -p "Database name to delete: " dbName
-source ./utils/validateDBName.sh $dbName
+source ./utils/validateName.sh $dbName
 
 
 # check if dbName is directory or not if it's directory then delete it
