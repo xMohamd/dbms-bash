@@ -19,7 +19,7 @@ do
         dbActions/listDBs.sh
             ;;
         "Connect To Specific Database")
-        source dbActions/connectDB.sh
+        dbActions/connectDB.sh
             ;;
         "Drop Database")
         dbActions/dropDB.sh
