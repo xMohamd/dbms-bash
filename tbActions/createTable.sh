@@ -6,7 +6,6 @@
 while true
 do
     read -p "Enter the name of the table: " tbName
-    echo $tbName
     source ../../utils/validateName.sh "$tbName"
     if [ $? -ne 0 ]; then
     continue
@@ -84,6 +83,9 @@ do
 
     ((counter++))
 done
+
+# Append a new line to the table file
+echo >> $tbName
 
 # Ask the user to choose the primary key using select and case
 pk_check=false
