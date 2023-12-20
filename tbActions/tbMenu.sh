@@ -22,6 +22,7 @@ do
         "List Tables")    source ../../tbActions/listTables.sh ;;
         "Drop Table")     source ../../tbActions/dropTable.sh ;;
         "Insert into Table") source ../../tbActions/insertIntoTable.sh ;;
+        "Select All From Table") source ../../tbActions/selectAllFromTable.sh ;;
         "Select From Table") source ../../tbActions/selectFromTable.sh ;;
         "Delete From Table") source ../../tbActions/deleteFromTable.sh ;;
         "Update Table") source ../../tbActions/updateTable.sh ;;
