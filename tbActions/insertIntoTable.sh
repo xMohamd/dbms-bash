@@ -6,6 +6,7 @@
 if [ ! "$(ls)" ] 
 then
     echo "There are no tables to show."
+    exit
 fi
 
 # List the available tables using listTables.sh
