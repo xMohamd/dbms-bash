@@ -9,6 +9,7 @@ options=(
     "List Tables"
     "Drop Table"
     "Insert into Table"
+    "Select All From Table"
     "Select From Table"
     "Delete From Table"
     "Update Table"
