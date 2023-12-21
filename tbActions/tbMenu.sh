@@ -2,7 +2,7 @@
 
 # Path: tbActions/tbMenu.sh
 
-PS3="Select an option (1-8): "
+PS3="Select an option (1-9): "
 
 options=(
     "Create Table"
@@ -21,12 +21,12 @@ do
     case $choice in
         "Create Table")   source ../../tbActions/createTable.sh;;
         "List Tables")    source ../../tbActions/listTables.sh ;;
-        "Drop Table")     source ../../tbActions/dropTable.sh ;;
-        "Insert into Table") source ../../tbActions/insertIntoTable.sh ;;
-        "Select All From Table") source ../../tbActions/selectAllFromTable.sh ;;
-        "Select From Table") source ../../tbActions/selectFromTable.sh ;;
-        "Delete From Table") source ../../tbActions/deleteFromTable.sh ;;
-        "Update Table") source ../../tbActions/updateTable.sh ;;
+        "Drop Table")     ../../tbActions/dropTable.sh ;;
+        "Insert into Table")  ../../tbActions/insertIntoTable.sh ;;
+        "Select All From Table")  ../../tbActions/selectAllFromTable.sh ;;
+        "Select From Table")  ../../tbActions/selectFromTable.sh ;;
+        "Delete From Table")  ../../tbActions/deleteFromTable.sh ;;
+        "Update Table")  ../../tbActions/updateTable.sh ;;
         "Back to Main Menu") 
             cd ../..
             source ./main.sh
