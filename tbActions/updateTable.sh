@@ -27,7 +27,7 @@ do
 done
 
 # determine the primary key
-pk=$(cat info.metadata | awk -F: '{print $1}' | tail -1)
+pk=$(cat $tbName.metadata | awk -F: '{print $1}' | tail -1)
 
 # detetmine the column number of the primary key
 pkNum=$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep -n "$pk" | cut -d: -f1)
