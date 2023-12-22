@@ -22,10 +22,19 @@ do
     if [ ! -f "$tbName" ] || [ ! -f "$tbName.metadata" ]
     then
         echo "Table Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
+
+# check if the table is empty cosidering ignoring the first line (column names)
+if [ ! "$(awk 'NR>1' $tbName)" ]
+then
+    echo "Table is Empty"
+    read -n 1 -s -r -p "Press any key to continue..."
+    exit
+fi
 
 # determine the primary key
 pk=$(cat $tbName.metadata | awk -F: '{print $1}' | tail -1)
