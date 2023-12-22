@@ -6,6 +6,7 @@
 if [ ! "$(ls)" ] 
 then
     echo "There are no tables to show."
+    read -n 1 -s -r -p "Press any key to continue..."
     exit
 fi
 
@@ -19,7 +20,8 @@ do
     if [ ! -f "$tbName" ] || [ ! -f "$tbName.metadata" ]
     then
         echo "Table Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done

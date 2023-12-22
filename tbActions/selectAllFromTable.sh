@@ -6,6 +6,7 @@
 if [ ! "$(ls)" ] 
 then
     echo "There are no tables to show."
+    read -n 1 -s -r -p "Press any key to continue..."
     exit
 fi
 
@@ -20,7 +21,8 @@ do
     if [ ! -f "$tbName" ] || [ ! -f "$tbName.metadata" ]
     then
         echo "Table Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
@@ -32,3 +34,4 @@ echo ""
 
 # Print the table data skip 1st line (column names)
 awk -F: 'NR>1{for(i=1;i<=NF;i++) printf "%s\t", $i; print ""}' $tbName
+read -n 1 -s -r -p "Press any key to continue..."

@@ -6,6 +6,7 @@
 if [ ! "$(ls)" ] 
 then
     echo "There are no tables to show."
+    read -n 1 -s -r -p "Press any key to continue..."
     exit
 fi
 
@@ -20,7 +21,8 @@ do
     if [ ! -f "$tbName" ] || [ ! -f "$tbName.metadata" ]
     then
         echo "Table Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
@@ -45,3 +47,4 @@ echo "$colName"
 
 # Print only column data that user selected skip 1st line (column names)
 awk -F: -v colNum="$colNum" 'NR>1{print $colNum}' $tbName
+read -n 1 -s -r -p "Press any key to continue..."

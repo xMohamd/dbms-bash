@@ -23,5 +23,5 @@ else
     mkdir dbs/$dbName
     echo "Database Created Successfully"
 fi
-
+read -n 1 -s -r -p "Press any key to continue..."
 

@@ -6,6 +6,7 @@
 if [ ! "$(ls)" ] 
 then
     echo "There are no tables to show."
+    read -n 1 -s -r -p "Press any key to continue..."
     exit
 fi
 

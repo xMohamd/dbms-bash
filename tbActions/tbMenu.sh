@@ -16,24 +16,29 @@ options=(
     "Back to Main Menu"
 )
 
-select choice in "${options[@]}"
+while true
 do
-    case $choice in
-        "Create Table")   source ../../tbActions/createTable.sh;;
-        "List Tables")    source ../../tbActions/listTables.sh ;;
-        "Drop Table")     ../../tbActions/dropTable.sh ;;
-        "Insert into Table")  ../../tbActions/insertIntoTable.sh ;;
-        "Select All From Table")  ../../tbActions/selectAllFromTable.sh ;;
-        "Select From Table")  ../../tbActions/selectFromTable.sh ;;
-        "Delete From Table")  ../../tbActions/deleteFromTable.sh ;;
-        "Update Table")  ../../tbActions/updateTable.sh ;;
-        "Back to Main Menu") 
-            cd ../..
-            source ./main.sh
-            ;;
-
-        *)
-            echo "Invalid Choice"
-            ;;
-    esac
+    clear
+    select choice in "${options[@]}"
+    do
+        case $choice in
+            "Create Table")    ../../tbActions/createTable.sh;;
+            "List Tables")    source ../../tbActions/listTables.sh ;;
+            "Drop Table")     ../../tbActions/dropTable.sh ;;
+            "Insert into Table")  ../../tbActions/insertIntoTable.sh ;;
+            "Select All From Table")  ../../tbActions/selectAllFromTable.sh ;;
+            "Select From Table")  ../../tbActions/selectFromTable.sh ;;
+            "Delete From Table")  ../../tbActions/deleteFromTable.sh ;;
+            "Update Table")  ../../tbActions/updateTable.sh ;;
+            "Back to Main Menu") 
+                cd ../..
+                exit
+                ;;
+            *)
+                echo "Invalid Choice"
+                ;;
+        esac
+        break
+    done
+    # break
 done

@@ -8,7 +8,8 @@ do
     read -p "Enter the name of the table: " tbName
     source ../../utils/validateName.sh "$tbName"
     if [ $? -ne 0 ]; then
-    continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
@@ -16,6 +17,7 @@ done
 if [ -f "$tbName" ] || [ -f "$tbName.metadata" ]
 then
     echo "Table Already Exists"
+    read -n 1 -s -r -p "Press any key to continue..."
     exit
 fi
 
@@ -29,11 +31,13 @@ do
     if [[ ! $colsNum =~ ^[0-9]+$ ]]
     then
         echo "Number of Columns Must Be a Number"
+        read -n 1 -s -r -p "Press any key to continue..."
         exit
     # Check if the colsNum equal 0
     elif [ $colsNum -eq 0 ]
     then
         echo "Number of Columns Must Be Greater Than 0"
+        read -n 1 -s -r -p "Press any key to continue..."
         exit  
     fi
     break
@@ -55,7 +59,8 @@ do
         read -p "Enter the name of column #$counter: " colName
         source ../../utils/validateName.sh "$colName"
         if [ $? -ne 0 ]; then
-            continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
         fi
         break
     done
