@@ -11,6 +11,7 @@ options=(
     "Insert into Table"
     "Select All From Table"
     "Select From Table"
+    "Select Record From Table"
     "Delete From Table"
     "Update Table"
     "Back to Main Menu"
@@ -28,6 +29,7 @@ do
             "Insert into Table")  ../../tbActions/insertIntoTable.sh ;;
             "Select All From Table")  ../../tbActions/selectAllFromTable.sh ;;
             "Select From Table")  ../../tbActions/selectFromTable.sh ;;
+            "Select Record From Table")  ../../tbActions/selectRecordFromTable.sh ;;
             "Delete From Table")  ../../tbActions/deleteFromTable.sh ;;
             "Update Table")  ../../tbActions/updateTable.sh ;;
             "Back to Main Menu") 
