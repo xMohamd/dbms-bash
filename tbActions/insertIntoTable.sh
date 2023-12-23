@@ -29,6 +29,12 @@ done
 # Initialize an array with the columns names
 columns_names=($(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1))
 
+# determine the primary key
+pk=$(cat $tbName.metadata | awk -F: '{print $1}' | tail -1)
+
+# detetmine the column number of the primary key
+pkNum=$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep -n "$pk" | cut -d: -f1)
+
 # Loop on the columns names
 for col in ${columns_names[@]}
 do
@@ -36,6 +42,16 @@ do
     while true
     do
         read -p "Enter the value of $col: " value
+        # if the col is the primary key then check if the value is unique
+        if [ "$col" = "$pk" ]
+        then
+            # Check if the value is unique
+            if [ "$(awk -F: -v pkNum="$pkNum" -v value="$value" '$pkNum==value' $tbName)" ]
+            then
+                echo "Value Must Be Unique"
+                continue
+            fi
+        fi
         # Validate the value of the column
         source ../../utils/validateValue.sh "$value" "$col" "$tbName"
         if [ $? -ne 0 ] 
