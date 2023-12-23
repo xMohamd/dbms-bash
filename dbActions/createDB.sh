@@ -12,7 +12,11 @@ while true
 do
     read -p "Enter the name of the database: " dbName
     source ./utils/validateName.sh $dbName
-    break
+    if [ $? -ne 0 ]; then
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
+    fi
+        break
 done
 
 
