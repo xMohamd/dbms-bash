@@ -42,9 +42,6 @@ pk=$(cat $tbName.metadata | awk -F: '{print $1}' | tail -1)
 # detetmine the column number of the primary key
 pkNum=$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep -n "$pk" | cut -d: -f1)
 
-# determine the number of separator in the table based on the number of columns
-sepNum=$(($(cat $tbName.metadata | wc -l) - 2))
-
 # ask the about the primary key value of the record that the user want to update
 while true
 do
