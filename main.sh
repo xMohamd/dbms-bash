@@ -13,6 +13,7 @@ options=(
 while true
 do
     clear
+    echo "Choose an option from the menu below:"
     select choice in "${options[@]}"
     do 
         case $choice in 

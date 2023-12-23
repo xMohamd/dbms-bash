@@ -2,7 +2,7 @@
 
 # Path: tbActions/tbMenu.sh
 
-PS3="Select an option (1-9): "
+PS3="Select an option (1-10): "
 
 options=(
     "Create Table"
@@ -20,6 +20,7 @@ options=(
 while true
 do
     clear
+    echo "Choose an option from the menu below:"
     select choice in "${options[@]}"
     do
         case $choice in
