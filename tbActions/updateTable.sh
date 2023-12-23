@@ -50,10 +50,11 @@ while true
 do
     read -p "Enter the value of the primary key ($pk) to update: " pkValue
     # search for the primary key value in the table if it's exist or not
-    if [ ! "$(awk -F: -v pkNum="$pkNum" -v pkValue="$pkValue" '$pkNum==pkValue' $tbName)" ]
+    if [ ! "$(awk -F: -v pkNum="$pkNum" -v pkValue="$pkValue" '$pkNum==pkValue' $tbName)" ] || [[ "$pkValue" = "" ]]
     then
         echo "Value Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
@@ -62,11 +63,20 @@ done
 while true
 do
     read -p "Enter the name of the column to update: " colName
+    # check if the column name is the primary key
+    if [ "$colName" = "$pk" ]
+    then
+        echo "You can't update the primary key"
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
+    fi
+
     # search for the column name in the table if it's exist or not
-    if [ ! "$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep "$colName")" ]
+    if [ ! "$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep "$colName")" ] || [[ "$colName" = "" ]]
     then
         echo "Column Doesn't Exist"
-        continue
+        read -n 1 -s -r -p "Press any key to continue..."
+        exit
     fi
     break
 done
@@ -91,21 +101,10 @@ colNum=$(cat $tbName.metadata | awk -F: '{print $1}' | head -n -1 | grep -n "$co
 # Extract the old value of the column that the user want to update
 oldValue=$(awk -F: -v pkNum="$pkNum" -v pkValue="$pkValue" '$pkNum==pkValue' $tbName | cut -d: -f"$colNum")
 
-# replace the old value with the new value and only update the line that contain the primary key value exactly
-# if there occurance of the old value in another column
-sed -i "/^$pkValue/s/$oldValue/$newValue/" $tbName
+# determine the primary key column name
+pkName=$(awk -F: '{if ($2 == "'$pkValue'") print $1}' $tbName)
 
-
-
-
-# colNames=($(awk -F: -v pkNum="$pkNum" -v pkValue="$pkValue" '$pkNum==pkValue' info | tr ':' ' '))
-# echo "colNames: ${colNames[@]}"
-# for i in ${colNames[@]}
-# do
-#     if [ "$i" == "$oldValue" ]
-#     then
-#         echo "oldValue: $oldValue"
-#         echo "i: $i"
-#         sed -i "/^$pkValue/s/$oldValue/$newValue/" $tbName
-#     fi
-# done
+# replace the old value with the new value and update the line that contains the primary key value
+sed -i "/$pkValue/s/$oldValue/$newValue/" $tbName
+echo "Record Updated Successfully"
+read -n 1 -s -r -p "Press any key to continue..."
