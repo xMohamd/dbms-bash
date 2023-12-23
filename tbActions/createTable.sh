@@ -59,8 +59,8 @@ do
         read -p "Enter the name of column #$counter: " colName
         source ../../utils/validateName.sh "$colName"
         if [ $? -ne 0 ]; then
-        read -n 1 -s -r -p "Press any key to continue..."
-        exit
+            read -n 1 -s -r -p "Press any key to continue..."
+            exit
         fi
         break
     done
@@ -110,4 +110,5 @@ do
     done
 done
 
-source ../../tbActions/tbMenu.sh
+echo "Table Created Successfully"
+read -n 1 -s -r -p "Press any key to continue..."
